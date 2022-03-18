@@ -19,5 +19,49 @@ namespace UdemyProject.Controllers
             IEnumerable<Category> categorylist = _db.Categories;
             return View(categorylist);
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Category obj)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Categories.Add(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(obj);
+        }
+        public IActionResult Edit(int? id)
+        {
+            if(id is null || id ==0)
+            { return NotFound(); }
+
+            var categoryfromdb = _db.Categories.Find(id);
+            if(categoryfromdb is null)
+                return NotFound();
+
+
+            return View(categoryfromdb);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Category obj)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Categories.Add(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(obj);
+        }
+
     }
 }
