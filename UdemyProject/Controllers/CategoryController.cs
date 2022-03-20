@@ -56,11 +56,35 @@ namespace UdemyProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Categories.Add(obj);
+                _db.Categories.Update(obj);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(obj);
+        }
+
+        public IActionResult Delete(int? id)
+        {
+            if (id is null || id == 0)
+            { return NotFound(); }
+
+            var categoryfromdb = _db.Categories.Find(id);
+            if (categoryfromdb is null)
+                return NotFound();
+
+
+            return View(categoryfromdb);
+        }
+
+        [HttpPost,ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeletePOST(int? id)
+        {
+            var obj = _db.Categories.Find(id);
+                _db.Categories.Remove(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+          
         }
 
     }
