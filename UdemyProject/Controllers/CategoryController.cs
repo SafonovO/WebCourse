@@ -33,6 +33,7 @@ namespace UdemyProject.Controllers
             {
                 _db.Categories.Add(obj);
                 _db.SaveChanges();
+                TempData["success"] = "category created successfully!";
                 return RedirectToAction("Index");
             }
             return View(obj);
@@ -58,6 +59,7 @@ namespace UdemyProject.Controllers
             {
                 _db.Categories.Update(obj);
                 _db.SaveChanges();
+                TempData["success"] = "category updated successfully!";
                 return RedirectToAction("Index");
             }
             return View(obj);
@@ -83,6 +85,7 @@ namespace UdemyProject.Controllers
             var obj = _db.Categories.Find(id);
                 _db.Categories.Remove(obj);
                 _db.SaveChanges();
+            TempData["success"] = "category deleted successfully!";
                 return RedirectToAction("Index");
           
         }

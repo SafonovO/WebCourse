@@ -3,6 +3,7 @@
     ViewData["Title"] = "Index";
 }
 
+
 <div class="container">
     <div class="row pt-4">
         <div class="col-6">
@@ -31,11 +32,11 @@
 <tbody>
         @foreach(var obj in Model)
         {
-            <tr> <td> @obj.Name </td>
-             <td> @obj.DisplayOrder </td>
-             <td> 
+            <tr> <td style="text-align:center; vertical-align:middle; width:33%;"> @obj.Name </td>
+             <td style="text-align:center; vertical-align:middle; width:33%;"> @obj.DisplayOrder </td>
+             <td style="width:33%;"> 
                  <div role="group">
-                     <a asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-primary float-start"> <i class="bi bi-pencil-square"></i> Edit</a>
+                     <a asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-primary float-md-none"> <i class="bi bi-pencil-square"></i> Edit</a>
                  <a asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-primary float-end"> <i class="bi bi-pencil-square"></i> Delete</a>
                  </div>
              </td>
