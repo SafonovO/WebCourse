@@ -24,11 +24,18 @@ namespace UdemyCourseRazor.Pages.Categories
 
         public async Task<IActionResult> OnPost()
         {
-           
-               await _db.Categories.AddAsync(category);
-               await _db.SaveChangesAsync();
+
+            if (category.Name == category.Description)
+            {
+                ModelState.AddModelError("category.Description", "Description should be different from Name");
+            }
+            if (ModelState.IsValid)
+            {
+                await _db.Categories.AddAsync(category);
+                await _db.SaveChangesAsync();
                 return RedirectToPage("Index");
-            
+            }
+            return Page();
         }
     }
 }

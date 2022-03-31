@@ -7,13 +7,16 @@
              <h2 class="text-primary pl-3"></h2>
              <hr />
         </div>
+        <div asp-validation-summary="All" class="text-danger"></div>
         <div class="mb-3">
             <label asp-for="category.Name"></label>
             <input asp-for="@Model.category.Name" class="form-control"/>
+            <span asp-validation-for="category.Name" class="text-danger"></span>
         </div>    
         <div class="mb-3">
             <label asp-for="category.Description"></label>
             <input asp-for="@Model.category.Description" class="form-control"/>
+            <span asp-validation-for="category.Description" class="text-danger"></span>
         </div>    
         <button type="submit" class="btn btn-primary" style="width:150px;">Create</button>
     </div>
@@ -21,3 +24,9 @@
     
     
 </form>
+
+@section scripts{
+@{
+    <partial name="_ValidationScriptsPartial"/>
+}
+}

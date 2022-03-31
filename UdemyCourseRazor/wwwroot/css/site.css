@@ -16,3 +16,11 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.text-glow-white {
+    text-shadow: white 0px 0px 5px;
+}
+
+.text-glow-red {
+    text-shadow: red 0px 0px 5px !important; 
+}
