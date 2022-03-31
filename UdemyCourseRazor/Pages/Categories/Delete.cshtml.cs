@@ -25,18 +25,10 @@ namespace UdemyCourseRazor.Pages.Categories
 
         public async Task<IActionResult> OnPost()
         {
-
-            if (Category.Name == Category.Description)
-            {
-                ModelState.AddModelError("category.Description", "Description should be different from Name");
-            }
-            if (ModelState.IsValid)
-            {
-                _db.Categories.Update(Category);
+           
+                _db.Categories.Remove(Category);
                  _db.SaveChangesAsync();
                 return RedirectToPage("Index");
-            }
-            return Page();
         }
     }
 }

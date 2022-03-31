@@ -7,8 +7,8 @@
         <div class="col-6">
             <h2 class="text-primary">Category List</h2>
         </div>
-        <div class="col 6">
-            <a asp-page="create" class="btn btn-primary" style="position:relative; bottom:0px;">
+        <div class="col 6 button-div">
+            <a asp-page="create" class="btn btn-primary" style=" position: absolute; bottom: 0;">
             Create new category 
              </a>
         </div>
@@ -37,7 +37,7 @@
             <a asp-page="Edit" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
                 <i class="bi bi-pencil-square"></i>
             </a>
-                <a asp-page="Delete" class="btn btn-danger mx-2">
+                <a asp-page="Delete" asp-route-id="@obj.Id" class="btn btn-danger mx-2">
                     <i class="bi bi-trash"></i>
                         </a>
             </div>
