@@ -10,7 +10,7 @@
             <h2 class="text-primary mt-3">Category List</h2>
         </div>
         <div class="col-6 text-end">
-            <a asp-controller="Category" asp-action="Create" class="btn btn-primary mb-3 text-white bg-success">
+            <a asp-controller="Category" asp-action="Create" class="btn mb-3 btn-green-glow">
                 <i class="bi bi-plus-square"></i> &nbsp Create new category
             </a>
         </div>
@@ -32,12 +32,12 @@
 <tbody>
         @foreach(var obj in Model)
         {
-            <tr> <td style="text-align:center; vertical-align:middle; width:33%;"> @obj.Name </td>
-             <td style="text-align:center; vertical-align:middle; width:33%;"> @obj.DisplayOrder </td>
+            <tr> <td class="text-glow-white" style="text-align:center; vertical-align:middle; width:33%;"> @obj.Name </td>
+             <td class="text-glow-white" style="text-align:center; vertical-align:middle; width:33%;"> @obj.DisplayOrder </td>
              <td style="width:33%;"> 
                  <div role="group">
-                     <a asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-primary float-md-none"> <i class="bi bi-pencil-square"></i> Edit</a>
-                 <a asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-primary float-end"> <i class="bi bi-pencil-square"></i> Delete</a>
+                     <a asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-yellow-glow float-md-none"> <i class="bi bi-pencil-square"></i> Edit</a>
+                 <a asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger-glow float-end"> <i class="bi bi-pencil-square"></i> Delete</a>
                  </div>
              </td>
         </tr>

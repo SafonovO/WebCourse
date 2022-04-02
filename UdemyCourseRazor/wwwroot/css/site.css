@@ -28,3 +28,7 @@ body {
 .button-div{
     position:relative;
 }
+
+footer{
+    margin-top: auto;
+}

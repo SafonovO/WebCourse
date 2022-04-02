@@ -1,26 +1,104 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-    height: 100vh;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
+    margin-bottom: 60px;
 }
 
-footer{
-    margin-top: auto;
+.text-glow-white {
+    text-shadow: white 0px 0px 5px;
 }
 
+.text-glow-red {
+    text-shadow: red 0px 0px 5px !important;
+}
+
+.button-div {
+    position: relative;
+}
+
+footer {
+    position:fixed !important;
+        bottom:30px;
+}
+
+
+.btn-yellow-glow {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #fff;
+    color: white !important;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    /*yellow glow around the button */
+    box-shadow: 0 0 2px rgb(224 169 0 / 80%), 0 0 4px rgb(224 169 0 / 40%), 0 0 1rem rgb(224 169 0 / 30%), 0 0 4rem rgb(224 169 0 / 10%);
+}
+
+    .btn-yellow-glow:hover {
+        color: #fff;
+        background-color: #d19d00;
+        border-color: #59359a;
+    }
+
+    .btn-yellow-glow:active {
+        box-shadow: 0 0 0 0.25rem #ffc107;
+    }
+    .btn-yellow-glow:focus {
+        box-shadow: 0 0 0 0.25rem #ffc107;
+    }
+    
+.btn-green-glow {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: #fff;
+    color: white !important;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    /*green glow around the button */
+    box-shadow: 0 0 2px rgb(0 224 0 / 80%), 0 0 4px rgb(0 224 0 / 40%), 0 0 1rem rgb(0 224 0 / 30%), 0 0 4rem rgb(0 224 0 / 10%);
+}
+
+    .btn-green-glow:hover {
+        color: #fff;
+        background-color: #218a39;
+        border-color: #218a39;
+    }
+    .btn-green-glow:active {
+        box-shadow: 0 0 0 0.25rem #28a745;
+    }
+.btn-green-glow:focus {
+    box-shadow: 0 0 0 0.25rem #28a745;
+}
+
+.btn-danger-glow {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: white !important;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    /*red glow around the button */
+    box-shadow: 0 0 2px rgb(224 0 0 / 80%), 0 0 4px rgb(224 0 0 / 40%), 0 0 1rem rgb(224 0 0 / 30%), 0 0 4rem rgb(224 0 0 / 10%);
+}
+
+    .btn-danger-glow:hover {
+        background-color: #b32b39;
+        border-color: #b32b39;
+    }
+    .btn-danger-glow:active {
+        box-shadow: 0 0 0 0.25rem #dc3545;
+    }
+    .btn-danger-glow:focus{
+        box-shadow: 0 0 0 0.25rem #dc3545;
+    }
+
+    /*create rainbow gradient button*/
+    
