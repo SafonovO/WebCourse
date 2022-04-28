@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using UdemyProject.DataAccess;
+using UdemyProject.DataAccess.Repository.IRepository;
 using UdemyProject.Models;
 
 namespace UdemyProject.Controllers
@@ -7,16 +8,16 @@ namespace UdemyProject.Controllers
     public class CategoryController : Controller
     {
 
-        private readonly ApplicationDbContext _db;
+        private readonly ICategoryRepository _categoryRepository;
 
-        public CategoryController(ApplicationDbContext db)
+        public CategoryController(ICategoryRepository db)
         {
-        _db = db;
+        _categoryRepository = db;
         }
 
         public IActionResult Index()
         {
-            IEnumerable<Category> categorylist = _db.Categories;
+            IEnumerable<Category> categorylist = _categoryRepository.GetAll();
             return View(categorylist);
         }
 
@@ -31,8 +32,8 @@ namespace UdemyProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Categories.Add(obj);
-                _db.SaveChanges();
+                _categoryRepository.Add(obj);
+                _categoryRepository.Save();
                 TempData["success"] = "category created successfully!";
                 return RedirectToAction("Index");
             }
@@ -43,8 +44,8 @@ namespace UdemyProject.Controllers
             if(id is null || id ==0)
             { return NotFound(); }
 
-            var categoryfromdb = _db.Categories.Find(id);
-            if(categoryfromdb is null)
+            var categoryfromdb = _categoryRepository.GetFirstOrDefault(u => u.Id == id);
+            if (categoryfromdb is null)
                 return NotFound();
 
 
@@ -57,8 +58,8 @@ namespace UdemyProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Categories.Update(obj);
-                _db.SaveChanges();
+                _categoryRepository.Update(obj);
+                _categoryRepository.Save();
                 TempData["success"] = "category updated successfully!";
                 return RedirectToAction("Index");
             }
@@ -70,7 +71,7 @@ namespace UdemyProject.Controllers
             if (id is null || id == 0)
             { return NotFound(); }
 
-            var categoryfromdb = _db.Categories.Find(id);
+            var categoryfromdb = _categoryRepository.GetFirstOrDefault(u => u.Id == id);
             if (categoryfromdb is null)
                 return NotFound();
 
@@ -82,9 +83,10 @@ namespace UdemyProject.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeletePOST(int? id)
         {
-            var obj = _db.Categories.Find(id);
-                _db.Categories.Remove(obj);
-                _db.SaveChanges();
+            var obj = _categoryRepository.GetFirstOrDefault(u => u.Id == id);
+            if (obj is null) { return NotFound(); }
+            _categoryRepository.Remove(obj);
+                _categoryRepository.Save();
             TempData["success"] = "category deleted successfully!";
                 return RedirectToAction("Index");
           
