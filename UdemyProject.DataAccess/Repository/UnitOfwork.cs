@@ -15,9 +15,12 @@ namespace UdemyProject.DataAccess.Repository
         {
             _db = db;
             Category = new CategoryRepository(_db);
+            DeviceClass = new DeviceClassRepository(_db);
         }
 
         public ICategoryRepository Category { get; private set; }
+
+        public IDeviceClassRepository DeviceClass { get; private set; }
 
         public void Save()
         {

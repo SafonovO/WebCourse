@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UdemyProject.Models;
 
 namespace UdemyProject.DataAccess.Repository.IRepository
 {
-    public interface IUnitOfWork
+    public interface IDeviceClassRepository: Irepository<DeviceClass>
     {
-        ICategoryRepository Category { get; }
-        IDeviceClassRepository DeviceClass { get; }
-
-        void Save();
-        
+        void Update(DeviceClass obj); 
     }
 }
