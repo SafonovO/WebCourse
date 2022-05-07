@@ -21,27 +21,25 @@
     <div class="collapse navbar-collapse" id="navbarColor02">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+          <a class="nav-link h4" style="margin-bottom:0; line-height:35px;" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
             <span class="visually-hidden">(current)</span>
-          </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" asp-area="" asp-controller="Category" asp-action="Index">Category</a>
-        </li>
-       
-      @*  <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Separated link</a>
-          </div>
-        </li>*@
-      </ul>
+        <li class="nav-item dropdown">
+         <div id="menu" class="button-yellow-glow">
+        <ul>
+            <li id="categories"><a class=" dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Content management</a>
+                <ul>
+                    <li><a  asp-area="Admin" asp-controller="Category" asp-action="Index">Category</a></li>
+                    <li><a  asp-area="Admin" asp-controller="DeviceClass" asp-action="Index">Device class</a></li>
+ 
+                </ul>
+            </li>
+        </ul>
     </div>
-  </div>
+                </li>
+                </ul>
+           </div>
+        </div>
 </nav>
        
     </header>
