@@ -1,0 +1,27 @@
+﻿
+<div class="container">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary mt-3">Product List</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Product" asp-action="Upsert" class="btn mb-3 btn-green-glow">
+                <i class="bi bi-plus-square"></i> &nbsp Create new product
+            </a>
+        </div>
+    </div>
+</div>
+
+<table class="table table-bordered table-striped text-center" style="width:100%">
+<thead>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Manufacturer</th>
+        <th>Category</th>
+        <th>Price</th>
+<th></th>
+    </tr>
+</thead>
+
+</table>

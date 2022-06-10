@@ -12,5 +12,6 @@ namespace UdemyProject.DataAccess
         }
         public DbSet<Category> Categories { get; set; }
         public DbSet<DeviceClass> DeviceClasses { get; set; }
+        public DbSet<Product> Products { get; set; }
     }
 }

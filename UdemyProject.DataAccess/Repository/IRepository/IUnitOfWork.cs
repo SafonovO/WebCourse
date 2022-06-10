@@ -10,6 +10,7 @@ namespace UdemyProject.DataAccess.Repository.IRepository
     {
         ICategoryRepository Category { get; }
         IDeviceClassRepository DeviceClass { get; }
+        IProductRepository Product { get; }
 
         void Save();
         
