@@ -12,7 +12,7 @@
     </div>
 </div>
 
-<table class="table table-bordered table-striped text-center" style="width:100%">
+<table id="tblData" class="table table-bordered table-striped " style="width:100%">
 <thead>
     <tr>
         <th>Name</th>
@@ -20,8 +20,12 @@
         <th>Manufacturer</th>
         <th>Category</th>
         <th>Price</th>
-<th></th>
+        <th></th>
     </tr>
 </thead>
 
 </table>
+
+@section Scripts{
+    <script src="~/js/product.js"></script>
+}

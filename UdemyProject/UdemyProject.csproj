@@ -23,4 +23,8 @@
     <ProjectReference Include="..\UdemyProject.Models\UdemyProject.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Images\Products\" />
+  </ItemGroup>
+
 </Project>
