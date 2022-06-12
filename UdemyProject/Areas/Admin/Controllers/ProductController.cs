@@ -50,11 +50,9 @@ public class ProductController : Controller
         }
         else
         {
-            
-        }
-
-
-        return View(productVM);
+            productVM.Product = _unitOfWork.Product.GetFirstOrDefault(u => u.ID == id);
+            return View(productVM);
+        }   
     }
 
     [HttpPost]
@@ -70,13 +68,31 @@ public class ProductController : Controller
                 var uploads = Path.Combine(wwRootPath, @"Images\Products");
                 var extension = Path.GetExtension(file.FileName);
 
+                if(obj.Product.ImageUrl is not null)
+                {
+                    var oldimagePath = Path.Combine(wwRootPath, obj.Product.ImageUrl.TrimStart('\\'));
+                    if (System.IO.File.Exists(oldimagePath))
+                    {
+                        System.IO.File.Delete(oldimagePath);
+                    }
+                }
+                
                 using (var filestreams = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
                 {
                     file.CopyTo(filestreams);
                 }
                 obj.Product.ImageUrl = @"\Images\Products\" + fileName + extension;
             }
-            _unitOfWork.Product.Add(obj.Product);
+            if(obj.Product.ID == 0)
+            {
+                _unitOfWork.Product.Add(obj.Product);
+
+            }
+            else
+            {
+                _unitOfWork.Product.Update(obj.Product);
+
+            }
             _unitOfWork.Save();
             TempData["success"] = "Product created successfully!";
             return RedirectToAction("Index");
@@ -84,37 +100,30 @@ public class ProductController : Controller
         return View(obj);
     }
 
+    [HttpDelete]
     public IActionResult Delete(int? id)
     {
-        if (id is null || id == 0)
-        { return NotFound(); }
+        var obj = _unitOfWork.Product.GetFirstOrDefault(u => u.ID == id); 
+        if (obj is null) {
+            return Json(new { success = false, message = "Error while deleting" });
+        }
+        var oldimagePath = Path.Combine(_hostEnvironment.WebRootPath, obj.ImageUrl.TrimStart('\\'));
+        if (System.IO.File.Exists(oldimagePath))
+        {
+            System.IO.File.Delete(oldimagePath);
+        }
 
-        var categoryfromdb = _unitOfWork.DeviceClass.GetFirstOrDefault(u => u.Id == id);
-        if (categoryfromdb is null)
-            return NotFound();
-
-
-        return View(categoryfromdb);
-    }
-
-    [HttpPost,ActionName("Delete")]
-    [ValidateAntiForgeryToken]
-    public IActionResult DeletePOST(int? id)
-    {
-        var obj = _unitOfWork.DeviceClass.GetFirstOrDefault(u => u.Id == id);
-        if (obj is null) { return NotFound(); }
-        _unitOfWork.DeviceClass.Remove(obj);
+        _unitOfWork.Product.Remove(obj);
         _unitOfWork.Save();
-        TempData["success"] = "Device class deleted successfully!";
-            return RedirectToAction("Index");
-      
+        return Json(new { success = true, message = "Deleted Successfully" });
+
     }
     #region API CALLS
     [HttpGet]
 
     public IActionResult getAll()
     {
-        var productlist = _unitOfWork.Product.GetAll();
+        var productlist = _unitOfWork.Product.GetAll(includeProperties: "Category,DeviceClass");
         return Json(new { data = productlist });
     }
     #endregion

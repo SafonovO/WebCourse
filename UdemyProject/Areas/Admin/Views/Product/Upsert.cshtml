@@ -1,8 +1,13 @@
 ﻿@model UdemyProject.Models.ViewModels.ProductVM
 
 <form method="post" asp-action="Upsert" enctype = "multipart/form-data">
-    <div class="border p-3 mt-4 row">
-        <div class="row pb-2">
+    <input asp-for="Product.ID" hidden/>
+    <input asp-for="Product.ImageUrl" hidden/>
+
+    <div class="row">
+        <div class="col-10">
+             <div class="border p-3 mt-4 row">
+        <div class="col-12 pb-2">
             <h2 class="text-primary">@(Model.Product.ID!=0?"Update":"Create") Product</h2>
             <hr/>
         </div>
@@ -71,8 +76,15 @@
     <a asp-controller="Product" asp-action="Index" class="btn btn-yellow-glow" style="width:150px; margin-left:20px;">
         Back to List
     </a>
+        </div>
+        
     </div>
     </div>
+    <div class="col-2" style="margin-top:135px">
+            <img src="@Model.Product.ImageUrl" width="100%" style="border-radius:5px;border:1px"/>
+        </div>
+   </div>
+    
 </form>
 
 @section Scripts{

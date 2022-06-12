@@ -22,28 +22,34 @@ namespace UdemyProject.Models
 
         [Required]
         [Range(1, 10000)]
+        [Display(Name = "List Price")]
         public double ListPrice { get; set; }
 
         [Required]
         [Range(1, 10000)]
+        [Display(Name = "Price for 1-4")]
         public double Price { get; set; }
         
         [Required]
         [Range(1,10000)]
+        [Display(Name = "Price for 5-9")]
         public double Price5 { get; set; }
             
         [Required]
         [Range(1, 10000)]
+        [Display(Name = "Price for 10+")]
         public double Price10 { get; set; }
         [ValidateNever]
         public string ImageUrl { get; set; }
 
         [Required]
+        [Display(Name = "Category")]
         public int CategoryId { get; set; }
         [ValidateNever]
         public Category Category { get; set; }
 
         [Required]
+        [Display(Name = "Device Class")]
         public int DeviceClassId { get; set; }
         [ValidateNever]
         public DeviceClass DeviceClass { get; set; }
