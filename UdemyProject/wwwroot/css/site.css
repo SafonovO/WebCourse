@@ -18,7 +18,26 @@ body {
 }
 
 .text-glow-white {
-    text-shadow: white 0px 0px 5px;
+    text-shadow: white 0px 0px 5px !important;
+}
+
+.text-main-white {
+    color: white !important;
+}
+
+.text-main-gray {
+    color: gray !important;
+    text-shadow: gray 0px 0px 0px !important;
+}
+
+.text-pale-orange {
+    color: #FFD580 !important;
+    text-shadow: #FFD580 0px 0px 5px !important;
+}
+
+.text-pale-green {
+    color: #98FB98 !important;
+    text-shadow: #98FB98 0px 0px 5px !important;
 }
 
 .text-glow-red {

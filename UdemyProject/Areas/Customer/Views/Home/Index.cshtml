@@ -1,8 +1,32 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model IEnumerable<UdemyProject.Models.Product> 
 
-<div class="text-center" margin-top:>
-    <h1 class="display-4">Welcome</h1>
-    <p>Hello world!!!!!</p>
+<div class="row pb-3" style="margin-left:16%">
+    @foreach(var product in Model)
+    {
+     <div class="col-lg-3 col-md-6">
+         <div class="row p-2">
+             <div class="col-12 p-1" style = "border:1px solid #008cba; border-radius:5px;">
+                 <div class="card">
+                     <img src ="@product.ImageUrl" class="card-img-top rounded" style="height:230px;width:245px;"/>
+                    <div class="card-body">
+                     <div class="pl-1">
+                        <p class="card-title h5 text-glow-white text-main-white">@product.Name</p>
+                        <p class="card-title h6 text-pale-orange">@product.Manufacturer</p>
+                    </div>
+                    <div class="pl-1">
+                        <p class="text-main-gray">List price: <strike><b>$@product.ListPrice.ToString("0.00")</b></strike></p>
+                    </div>
+                    <div class="pl-1">
+                        <p class="text-pale-green">As low as: <b>$@product.Price10.ToString("0.00")</b></p>
+                    </div>
+                    </div>
+                 </div>
+                 <div>
+                     <a asp-action="Details" class="btn btn-primary form-control" asp-route-id="@product.ID">Details</a>
+                 </div>
+             </div>
+         </div>
+     </div>   
+        
+    }
 </div>
