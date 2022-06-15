@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -24,19 +25,26 @@
           <a class="navbar-brand h5" style="margin-bottom:0; line-height:55px;" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
             <span class="visually-hidden">(current)</span>
         </li>
-        <li class="nav-item dropdown">
-         <div id="menu" class="button-yellow-glow">
-        <ul>
-            <li id="categories"><a class=" dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Content management</a>
-                <ul>
-                    <li><a  asp-area="Admin" asp-controller="Category" asp-action="Index">Category</a></li>
-                    <li><a  asp-area="Admin" asp-controller="DeviceClass" asp-action="Index">Device class</a></li>
-                    <li><a  asp-area="Admin" asp-controller="Product" asp-action="Index">Product</a></li>
- 
-                </ul>
-            </li>
-        </ul>
-    </div>
+        @if (HttpContextAccessor.HttpContext.Request.Cookies["MyCookie"]is not null && HttpContextAccessor.HttpContext.Request.Cookies["MyCookie"].Equals("admin"))
+                        {
+                            <li class="nav-item dropdown">
+                                <div id="menu" class="button-yellow-glow">
+                                    <ul>
+                                        <li id="categories"><a class=" dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Content management</a>
+                                            <ul>
+                                                <li><a  asp-area="Admin" asp-controller="Category" asp-action="Index">Category</a></li>
+                                                <li><a  asp-area="Admin" asp-controller="DeviceClass" asp-action="Index">Device class</a></li>
+                                                <li><a  asp-area="Admin" asp-controller="Product" asp-action="Index">Product</a></li>
+
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        }
+                        <li>
+
+                    <a asp-area="Customer" asp-controller="Authorization" asp-action="Index" class="btn btn-primary form-control" style="margin-right:auto;margin-left:1100px; max-width:120px">Login</a>
                 </li>
                 </ul>
            </div>

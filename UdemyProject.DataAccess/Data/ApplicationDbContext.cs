@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using UdemyProject.Models;
 
 namespace UdemyProject.DataAccess
 {
-    public class ApplicationDbContext: DbContext
+    public class ApplicationDbContext: IdentityDbContext
     {
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options): base(options)
@@ -13,5 +14,6 @@ namespace UdemyProject.DataAccess
         public DbSet<Category> Categories { get; set; }
         public DbSet<DeviceClass> DeviceClasses { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
